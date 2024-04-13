@@ -77,7 +77,7 @@ const SignIn = async (req, res) => {
       .status(200)
       .cookie("access_token", token, {
         httpOnly: true,
-        secure: true,
+        secure: false,
         sameSite: "None",
       })
       .json({ success: true, msg: "Sign-In Successfully..!!", user: rest });

@@ -1,7 +1,7 @@
 const User = require("../model/UserModal");
 const bcryptjs = require("bcryptjs");
 
-const UpdateUser = async (req, res) => {
+const  UpdateUser = async (req, res) => {
   if (req.user.id != req.params.id) {
     return res.json({ success: false, msg: "You are not Allow to do that.!!" });
   }

@@ -9,12 +9,20 @@ require("dotenv").config({ path: path.join(__dirname, "./.env") });
 const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+const allowedOrigins = ["https://heartfelt-brigadeiros-09c807.netlify.app"];
+
 const corsOptions = {
-  origin: "https://deluxe-travesseiro-f63473.netlify.app",
+  origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true,
 };
 
-app.use(cors(corsOptions)); 
+app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use("/v1", IndexRoutes);
 

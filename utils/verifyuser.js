@@ -8,7 +8,7 @@ const verifyToken = (req, res, next) => {
 
   jwt.verify(token, process.env.JWT_SECRET_KEY, (err, user) => {
     if (err) {
-      return res.json({ success: false, msg: "unauthorized.!" });
+      return res.json({ success: false, msg: "Invalid token.!" });
     }
     req.user = user;
     next();

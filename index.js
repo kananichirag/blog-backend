@@ -10,7 +10,7 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 const corsOptions = {
-  origin: "https://dancing-faloodeh-a18570.netlify.app",
+  origin: "https://resonant-tapioca-f13bc6.netlify.app",
   credentials: true,
 };
 

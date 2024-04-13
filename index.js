@@ -1,6 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const IndexRoutes = require("../api/routes/IndexRoutes");
+const IndexRoutes = require("./routes/IndexRoutes");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 require("dotenv").config({ path: path.join(__dirname, "./.env") });

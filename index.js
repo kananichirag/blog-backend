@@ -9,16 +9,8 @@ require("dotenv").config({ path: path.join(__dirname, "./.env") });
 const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-const allowedOrigins = ["https://dancing-faloodeh-a18570.netlify.app/"];
-
 const corsOptions = {
-  origin: function (origin, callback) {
-    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
+  origin: "https://dancing-faloodeh-a18570.netlify.app",
   credentials: true,
 };
 

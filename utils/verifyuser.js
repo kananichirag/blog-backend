@@ -14,8 +14,8 @@ const verifyToken = (req, res, next) => {
 
     return null;
   }
-  // const token = getCookie("access_token");
-  const token = req.cookies.access_token;
+  const token = getCookie("access_token");
+  //const token = req.cookies.access_token;
   if (!token) {
     return res.json({ success: false, msg: "Unauthorized.!!" });
   }

@@ -9,7 +9,12 @@ require("dotenv").config({ path: path.join(__dirname, "./.env") });
 const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(cors());
+const corsOptions = {
+  origin: "https://deluxe-travesseiro-f63473.netlify.app",
+  credentials: true,
+};
+
+app.use(cors(corsOptions)); 
 app.use(cookieParser());
 app.use("/v1", IndexRoutes);
 

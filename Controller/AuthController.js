@@ -18,7 +18,7 @@ const SignUp = async (req, res) => {
         .status(400)
         .json({ success: false, msg: "All Fields are required...!!!" });
     }
-      
+
     if (checkuser) {
       return res.json({
         success: false,
@@ -68,15 +68,19 @@ const SignIn = async (req, res) => {
       });
     }
 
-      const token = jwt.sign(
-        { id: validuser._id, isAdmin: validuser.isAdmin },
-        process.env.JWT_SECRET_KEY
-      );
-      const { password: pass, ...rest } = validuser._doc;
-      res
-        .status(200)
-        .cookie("access_token", token, { httpOnly: true })
-        .json({ success: true, msg: "Sign-In Successfully..!!", user: rest });
+    const token = jwt.sign(
+      { id: validuser._id, isAdmin: validuser.isAdmin },
+      process.env.JWT_SECRET_KEY
+    );
+    const { password: pass, ...rest } = validuser._doc;
+    res
+      .status(200)
+      .cookie("access_token", token, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "None",
+      })
+      .json({ success: true, msg: "Sign-In Successfully..!!", user: rest });
   } catch (error) {
     console.log(error);
     res.json({

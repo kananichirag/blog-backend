@@ -9,7 +9,7 @@ require("dotenv").config({ path: path.join(__dirname, "./.env") });
 const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-const allowedOrigins = ["https://heartfelt-brigadeiros-09c807.netlify.app"];
+const allowedOrigins = ["https://dancing-faloodeh-a18570.netlify.app/"];
 
 const corsOptions = {
   origin: function (origin, callback) {
